@@ -46,7 +46,8 @@ public class SimpleNeuron {
                 {5, 11}
         };
 
-        int epochs = 210;
+        // Training
+        int epochs = 200;
         for (int epoch = 0; epoch < epochs; epoch++) {
             System.out.println("Epoch " + (epoch + 1));
             for (double[] data : trainingData) {
@@ -55,6 +56,14 @@ public class SimpleNeuron {
                 neuron.train(input, target);
             }
             System.out.println("------------------------");
+        }
+        System.out.println("Training is finished. Commencing new data predictions.");
+
+        // Inference (New Input)
+        double[] newInputs = {6, 7, 8, 9, 10};
+        for (double input : newInputs) {
+            double pred = neuron.predict(input);
+            System.out.printf("Prediction for input %.2f: %.2f\n", input, pred);
         }
     }
 }
